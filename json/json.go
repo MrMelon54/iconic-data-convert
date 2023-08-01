@@ -1,4 +1,4 @@
-package main
+package json
 
 type IconicData struct {
 	Underscore string         `json:"_"`
@@ -9,4 +9,5 @@ type IconicModule struct {
 	Key   string   `json:"key"`
 	Raw   string   `json:"raw"`
 	Parts []string `json:"parts"`
+	Order int      `json:"-"`
 }

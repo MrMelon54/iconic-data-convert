@@ -1,0 +1,18 @@
+    private OrderedDictionary ModuleList = new OrderedDictionary {
+
+            { "Wires", iconicData._Wires },
+            { "The Button", iconicData._TheButton },
+            { "Keypad", iconicData._Keypad },
+            { "Simon Says", iconicData._SimonSays },
+            { "Who's on First", iconicData._WhosOnFirst },
+            { "Memory", iconicData._Memory },
+            { " invalid line ", Code },
+            { "Complicated Wires", iconicData._ComplicatedWires },
+            { "Wire Sequence", iconicData._WireSequence },
+            { "Maze", iconicData._Maze },
+            { "Password", iconicData._Password },
+            { "Needy Vent Gas", iconicData._VentingGas },
+            { "Needy Capacitor", iconicData._CapacitorDischarge },
+            { "Needy Knob", iconicData._Knob },
+
+    };
