@@ -7,6 +7,7 @@ type IconicData struct {
 
 type IconicModule struct {
 	Key   string   `json:"key"`
+	Icon  string   `json:"icon"`
 	Raw   string   `json:"raw"`
 	Parts []string `json:"parts"`
 	Order int      `json:"-"`

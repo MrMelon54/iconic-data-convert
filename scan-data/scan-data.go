@@ -14,7 +14,7 @@ var (
 	reClean = strings.NewReplacer("░", " ", "▒", " ", "▓", " ", "█", " ", "═", " ", "║", " ")
 )
 
-func ScanIconicData(l *log.Logger, s *bufio.Scanner, moduleMap map[string]string, order map[string]int) []json.IconicModule {
+func ScanIconicData(l *log.Logger, s *bufio.Scanner, moduleMap map[string]string, order map[string]int, repoRawJson json.KtaneRawJson) []json.IconicModule {
 	modules := make([]json.IconicModule, 0, len(order))
 	var running, ignoreLines bool
 	for s.Scan() {
@@ -63,9 +63,15 @@ func ScanIconicData(l *log.Logger, s *bufio.Scanner, moduleMap map[string]string
 		}
 
 		if modKey, ok := moduleMap[modVar]; ok {
-			if index, ok := order[modKey]; ok {
+			modId := repoRawJson.ConvertDisplayNameToID(modKey)
+			if index, ok := order[modId]; ok {
+				modIcon := repoRawJson.ConvertIdToIconName(modId)
+				if modIcon == "" {
+					log.Printf("[WARNING] Failed to find icon name for module '%s'\n", modId)
+				}
 				modules = append(modules, json.IconicModule{
-					Key:   modKey,
+					Key:   modId,
+					Icon:  modIcon,
 					Raw:   modRaw,
 					Parts: partSlice,
 					Order: index,
